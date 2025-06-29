@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Mobile>
+@{
+    Layout = "_AdminLayout";
+    // ViewData["Title"] = "Index";
+}
+
+<h2>Books</h2>
+
+<a asp-action="AddMobile" asp-controller="Mobile" class="btn btn-primary">Add More</a>
+
+@if (Model?.Count() > 0)
+{
+    <table class="table table-striped my-2">
+        <tr>
+            <th>Image</th>
+            <th>Mobile Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Stroage</th>
+            <th>Ram</th>
+            <th>Main Camera</th>
+            <th>Fornt Camera</th>
+            <th>Display</th>
+            <th>Battery</th>
+            <th>Operating System</th>
+            <th>Action</th>
+            
+        </tr>
+
+        @foreach (var mobile in Model)
+        {
+            <tr>
+                <td>
+                    @if (string.IsNullOrWhiteSpace(mobile.Image))
+                    {
+                        <img src="/Image/" style="width:80px;height:100px" alt="mobile image" />
+                    }
+                    else
+                    {
+                        <img src="/Image/@mobile.Image" style="width:80px;height:100px" alt="mobile image" />
+                    }
+                </td>
+                <td>@mobile.MobileName</td>
+                <td>@mobile.Brands.BrandName</td>
+                <td>@mobile.Price</td>
+                <td>@mobile.Stroage</td>
+                <td>@mobile.Ram</td>
+                <td>@mobile.MainCamera</td>
+                <td>@mobile.ForntCamera</td>
+                <td>@mobile.Display</td>
+                <td>@mobile.Battery</td>
+                <td>@mobile.OperatingSystem</td>
+                <td>
+                    <a asp-action="UpdateMobile" asp-controller="Mobile" asp-route-id="@mobile.Id" class="btn btn-success">Edit</a>
+                    <a asp-action="DeleteMobile" asp-controller="Mobile" asp-route-id="@mobile.Id" class="btn btn-danger" onclick="return window.confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h3>No records</h3>
+}
+

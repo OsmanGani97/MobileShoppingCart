@@ -1,0 +1,85 @@
+﻿@model MobileDTO
+@{
+    Layout = "_AdminLayout";
+    // ViewData["Title"] = "UpdateMobile";
+}
+
+<div style="width:50%">
+    <h2> Update Mobile </h2>
+    <a asp-action="Index" asp-controller="Mobile" class="btn btn-primary">Back</a>
+    <form asp-action="UpdateMobile" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Image" />
+
+        <div class="my-2">
+            <label>Mobile*</label>
+            <input type="text" class="form-control" asp-for="MobileName" />
+            <span asp-validation-for="MobileName" class="text-danger"></span>
+        </div>
+
+      
+
+        <div class="my-2">
+            <label>Brand*</label>
+            <select class="form-control" asp-for="BrandId" asp-items="Model.BrandList">
+                <option value="">Select Brand</option>
+            </select>
+            <span asp-validation-for="BrandId" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <label>Price*</label>
+            <input type="number" class="form-control" asp-for="Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Stroage*</label>
+            <input type="text" class="form-control" asp-for="Stroage" />
+            <span asp-validation-for="Stroage" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Ram*</label>
+            <input type="text" class="form-control" asp-for="Ram" />
+            <span asp-validation-for="Ram" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Main Camera*</label>
+            <input type="text" class="form-control" asp-for="MainCamera" />
+            <span asp-validation-for="MainCamera" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Fornt Camera*</label>
+            <input type="text" class="form-control" asp-for="ForntCamera" />
+            <span asp-validation-for="ForntCamera" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Display*</label>
+            <input type="text" class="form-control" asp-for="Display" />
+            <span asp-validation-for="Display" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Battery*</label>
+            <input type="text" class="form-control" asp-for="Battery" />
+            <span asp-validation-for="Battery" class="text-danger"></span>
+        </div>
+        <div class="my-2">
+            <label>Operating System*</label>
+            <input type="text" class="form-control" asp-for="OperatingSystem" />
+            <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <label>Image</label>
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="/Image/@Model.Image" style="width:100px;height:80px" />
+            }
+            <input type="file" class="form-control" asp-for="ImageFile" />
+        </div>
+
+        <div class="my-2">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+    </form>
+</div>
+
